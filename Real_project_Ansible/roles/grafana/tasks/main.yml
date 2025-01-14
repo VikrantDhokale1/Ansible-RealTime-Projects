@@ -3,6 +3,7 @@
     url: https://packages.grafana.com/gpg.key
     state: present
 
+
 - name: Add Grafana APT repository
   apt_repository:
     repo: 'deb https://packages.grafana.com/oss/deb stable main'
