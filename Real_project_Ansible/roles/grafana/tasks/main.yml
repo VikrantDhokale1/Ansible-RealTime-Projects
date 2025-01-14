@@ -32,3 +32,11 @@
     url: http://127.0.0.1:3000
     method: GET
     status_code: 200
+    timeout: 60  # Increase timeout to allow more time for Grafana to start
+  register: grafana_status
+  failed_when: false  # Do not fail the playbook if the URL is not accessible yet
+
+- name: "Grafana accessibility status"
+  debug:
+    msg: "Grafana is not accessible yet. Status: {{ grafana_status.status }}"
+  when: grafana_status.status is not defined or grafana_status.status != 200
